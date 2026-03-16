@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import scipy.stats as stats
 
 
-
+# Исходные данные
 # m1 = [-5, 2, -3]
 # m2 = [-4, -5, 4]
 # C = [[11, -0.8, 1.0], [-0.8, 10, 0.5], [1.0, 0.5, 7]]
