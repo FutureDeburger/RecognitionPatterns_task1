@@ -2,6 +2,7 @@ import numpy as np
 from scipy.stats import multivariate_normal, norm
 import matplotlib.pyplot as plt
 
+
 # -----------------------------
 # 1. Исходные данные
 # -----------------------------
@@ -23,6 +24,7 @@ C[:, :, 2] = np.array([[3, 1.5], [1.5, 1]])
 C_inv = np.zeros_like(C)
 for i in range(M):
     C_inv[:, :, i] = np.linalg.inv(C[:, :, i])
+
 
 # -----------------------------
 # 2. Теоретические ошибки (приближение)
@@ -68,6 +70,7 @@ for i in range(M):
     PIJ[i, i] = 1 - np.sum(PIJ[i, :])
     PIJB[i, i] = 1 - np.sum(PIJB[i, :])
 
+
 # -----------------------------
 # 3. Эксперимент
 # -----------------------------
@@ -92,6 +95,7 @@ for k in range(K):
 
 Pc /= K
 
+
 # -----------------------------
 # 4. Суммарные ошибки
 # -----------------------------
@@ -107,6 +111,7 @@ Pe_chernov = 0
 for i in range(M):
     for j in range(i + 1, M):
         Pe_chernov += np.sqrt(pw[i] * pw[j]) * np.exp(-mu_b[i, j])
+
 
 # -----------------------------
 # 5. Вывод
@@ -127,6 +132,7 @@ print("\nСуммарные ошибки:")
 print(f"Экспериментальная: {Pe_exp:.4f}")
 print(f"Теоретическая:     {Pe_theor:.4f}")
 print(f"Чернова (оценка):  {Pe_chernov:.4f}")
+
 
 # -----------------------------
 # 6. Визуализация
