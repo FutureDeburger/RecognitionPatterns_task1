@@ -42,7 +42,7 @@ for i in range(M):
         dti = np.linalg.det(C[:, :, i])
         dtj = np.linalg.det(C[:, :, j])
 
-        # ---- Bhattacharyya distance (ПРАВИЛЬНЫЙ) ----
+        # Bhattacharyya distance
         C_avg = (C[:, :, i] + C[:, :, j]) / 2
 
         mu = (1/8) * dm.T @ np.linalg.inv(C_avg) @ dm \
@@ -51,14 +51,14 @@ for i in range(M):
         mu_b[i, j] = mu
         mu_b[j, i] = mu
 
-        # ---- Граница Чернова ----
+        # Граница Чернова
         PIJB[i, j] = np.sqrt(pw[j] / pw[i]) * np.exp(-mu)
         PIJB[j, i] = np.sqrt(pw[i] / pw[j]) * np.exp(-mu)
 
-        # ---- Теоретическая ошибка (гауссовское приближение) ----
+        # Теоретическая ошибка
         l0 = np.log(pw[j] / pw[i])
 
-        # среднее и дисперсия (упрощённо)
+        # среднее и дисперсия
         mg = 0.5 * (dm.T @ C_inv[:, :, i] @ dm)
         Dg = dm.T @ C_inv[:, :, i] @ dm
 
@@ -147,14 +147,14 @@ if n == 2:
 
     plt.figure(figsize=(9, 7))
 
-    # ---- Плотности ----
+    # Плотности
     for i in range(M):
         rv = multivariate_normal(mean=m[:, i], cov=C[:, :, i])
         Z = rv.pdf(X).reshape(X1.shape)
         cs = plt.contour(X1, X2, Z, levels=5)
         plt.clabel(cs, inline=True, fontsize=8)
 
-    # ---- Области классификации ----
+    # Области классификации
     Z_class = np.zeros(X.shape[0])
 
     for idx, x in enumerate(X):
@@ -170,7 +170,7 @@ if n == 2:
 
     plt.contourf(X1, X2, Z_class, alpha=0.25)
 
-    # ---- Центры классов ----
+    # Центры классов
     plt.scatter(m[0, :], m[1, :], c='red', marker='x', s=100, label='Центры классов')
 
     for i in range(M):
@@ -184,3 +184,4 @@ if n == 2:
     plt.gca().set_aspect('equal')
 
     plt.show()
+
