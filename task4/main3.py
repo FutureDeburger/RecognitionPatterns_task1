@@ -11,6 +11,8 @@ import numpy as np
 from scipy.stats import binom
 import matplotlib.pyplot as plt
 from statistics import mode
+
+
 #1. Задание исходных данных
 n = 35  # количество признаков (исходя из размера изображений)
 M = 3  # количество классов
