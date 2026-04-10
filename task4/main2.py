@@ -124,9 +124,9 @@ p1, = plt.plot(pi, p12th, '-b', label='p12th')
 p2, = plt.plot(pi, p21th, '-r', label='p21th')
 p3, = plt.plot(pi, p12ex, '--ok', label='p12ex')
 p4, = plt.plot(pi, p21ex, '--^k', label='p21ex')
-plt.title('Теоретические вероятности ошибок и их оценки', fontsize=14, fontname='Courier')
-plt.xlabel('pi', fontsize=14, fontname='Courier')
-plt.ylabel('P', fontsize=14, fontname='Courier')
+plt.title('Теоретические вероятности ошибок и их оценки', fontsize=14)
+plt.xlabel('pi', fontsize=14)
+plt.ylabel('P', fontsize=14)
 strv1 = ' pw='
 strv2 = ' '.join([f'{val: .2g}' for val in pw])
 plt.text(0.1, 0.75 * ms, f'{strv1}{strv2}', horizontalalignment='left',
